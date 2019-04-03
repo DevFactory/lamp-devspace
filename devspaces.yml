@@ -1,0 +1,28 @@
+--- # devspaces.yml
+name: lamp
+description: DevSpace for LAMP stack development
+icon-file: lamplogo.png
+
+docker-file: Dockerfile
+
+docker-build-includes: |
+  **/*
+
+ports:
+  - protocol: http
+    port-number: 80
+    description: Apache2 Web Listener
+  - protocol: tcp
+    port-number: 3306
+    description: MySQL Net Listener
+
+environment-vars:
+  - name: MYSQL_ADMIN_PASS
+    value: Passw0rd
+    description: MySQL admin user password
+
+sync-ignore: |
+  .git
+  .idea
+  .DS_Store
+  .data
